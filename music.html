@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hộp 3D Đổi Màu 🎨</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #232345);
+      height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      background: #3498db;
+      margin: 20px auto;
+      border-radius: 15px;
+      transform-style: preserve-3d;
+      animation: spin 6s infinite linear;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      transition: background 0.3s;
+    }
+
+    input[type="color"] {
+      border: none;
+      outline: none;
+      width: 80px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button {
+      background: #ff3c7f;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ff679d;
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg) rotateX(0deg); }
+      to { transform: rotateY(360deg) rotateX(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Hộp 3D Đổi Màu ✨</h1>
+    <div class="box" id="box"></div>
+    <input type="color" id="colorPicker" value="#3498db">
+    <br>
+    <button onclick="applyColor()">Đổi Màu</button>
+    <br>
+  </div>
+
+  <script>
+    function applyColor() {
+      let color = document.getElementById("colorPicker").value;
+      document.getElementById("box").style.background = color;
+      document.getElementById("box").style.boxShadow = `0 0 30px ${color}`;
+    }
+  </script>
+</body>
+</html>
